@@ -3,36 +3,46 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Évaluation Matrice Fonctionnelle</title>
+<title>Évaluation Matrice Fonctionnelle — CITRON</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header class="app-header no-print">
-  <h1>Évaluation Matrice Fonctionnelle</h1>
-  <nav class="tabs">
-    <button type="button" class="tab-btn active" data-view="form">Nouvelle fiche</button>
-    <button type="button" class="tab-btn" data-view="list">Fiches enregistrées</button>
-  </nav>
+  <div class="app-header__inner">
+    <a href="../index.html" class="app-header__brand">
+      <img src="../assets/citron-logo.png" alt="CITRON" class="app-header__logo" />
+      <span class="app-header__title">Évaluation Matrice Fonctionnelle</span>
+    </a>
+    <nav class="tabs">
+      <button type="button" class="tab-btn active" data-view="form">Nouvelle fiche</button>
+      <button type="button" class="tab-btn" data-view="list">Fiches enregistrées</button>
+    </nav>
+  </div>
 </header>
 
-<main>
+<main class="wrap">
 
   <section id="view-form" class="view">
     <form id="matrice-form">
-      <fieldset class="patient-block">
+      <fieldset class="group-block group-patient">
         <legend>Patient</legend>
-        <div class="field">
-          <label for="input-nom">Nom</label>
-          <input type="text" id="input-nom" name="nom" required />
-        </div>
-        <div class="field">
-          <label for="input-prenom">Prénom</label>
-          <input type="text" id="input-prenom" name="prenom" required />
-        </div>
-        <div class="field">
-          <label for="input-date">Date de la fiche</label>
-          <input type="date" id="input-date" name="date" required />
+        <div class="group-block__fields group-block__fields--3">
+          <div class="field">
+            <label for="input-nom">Nom</label>
+            <input type="text" id="input-nom" name="nom" required />
+          </div>
+          <div class="field">
+            <label for="input-prenom">Prénom</label>
+            <input type="text" id="input-prenom" name="prenom" required />
+          </div>
+          <div class="field">
+            <label for="input-date">Date de la fiche</label>
+            <input type="date" id="input-date" name="date" required />
+          </div>
         </div>
       </fieldset>
 
@@ -40,31 +50,33 @@
 
       <p id="form-error" class="error-msg hidden"></p>
       <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Enregistrer la fiche</button>
-        <button type="button" id="btn-reset" class="btn">Réinitialiser</button>
+        <button type="submit" class="btn btn--fill-primary">Enregistrer la fiche</button>
+        <button type="button" id="btn-reset" class="btn btn--ghost">Réinitialiser</button>
       </div>
     </form>
   </section>
 
   <section id="view-list" class="view hidden">
-    <table class="fiches-table">
-      <thead>
-        <tr><th>Nom</th><th>Prénom</th><th>Date</th><th>Actions</th></tr>
-      </thead>
-      <tbody id="fiches-tbody"></tbody>
-    </table>
-    <p id="list-empty" class="empty-msg hidden">Aucune fiche enregistrée.</p>
-    <p id="list-error" class="error-msg hidden"></p>
+    <div class="card">
+      <table class="fiches-table">
+        <thead>
+          <tr><th>Nom</th><th>Prénom</th><th>Date</th><th>Actions</th></tr>
+        </thead>
+        <tbody id="fiches-tbody"></tbody>
+      </table>
+      <p id="list-empty" class="empty-msg hidden">Aucune fiche enregistrée.</p>
+      <p id="list-error" class="error-msg hidden"></p>
+    </div>
   </section>
 
   <section id="view-detail" class="view hidden">
     <div class="detail-actions no-print">
-      <button type="button" id="btn-print" class="btn btn-primary">🖨️ Imprimer</button>
-      <button type="button" id="btn-edit" class="btn">Modifier</button>
-      <button type="button" id="btn-delete" class="btn btn-danger">Supprimer</button>
-      <button type="button" id="btn-back" class="btn">← Retour à la liste</button>
+      <button type="button" id="btn-print" class="btn btn--fill-primary">🖨️ Imprimer</button>
+      <button type="button" id="btn-edit" class="btn btn--outline-primary">Modifier</button>
+      <button type="button" id="btn-delete" class="btn btn--danger">Supprimer</button>
+      <button type="button" id="btn-back" class="btn btn--ghost">← Retour à la liste</button>
     </div>
-    <div id="detail-content" class="printable"></div>
+    <div id="detail-content" class="printable card"></div>
   </section>
 
 </main>

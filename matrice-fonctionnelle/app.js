@@ -79,32 +79,31 @@ function switchView(name) {
   }
 }
 
+function buildGroupFieldset(group, fieldsExtraClass = '') {
+  const fieldset = document.createElement('fieldset');
+  fieldset.className = `group-block group-${group.id}`;
+  const legend = document.createElement('legend');
+  legend.textContent = group.title;
+  fieldset.appendChild(legend);
+  const fieldsWrapper = document.createElement('div');
+  fieldsWrapper.className = `group-block__fields ${fieldsExtraClass}`.trim();
+  for (const field of group.fields) {
+    fieldsWrapper.appendChild(buildSelectField(group.id, field));
+  }
+  fieldset.appendChild(fieldsWrapper);
+  return fieldset;
+}
+
 function renderFormGroups() {
   els.formGroups.innerHTML = '';
   for (const group of FIELD_GROUPS) {
     if (group.id === 'general') continue; // rendu dans son propre fieldset plus haut si besoin
-    const fieldset = document.createElement('fieldset');
-    fieldset.className = 'group-block';
-    const legend = document.createElement('legend');
-    legend.textContent = group.title;
-    fieldset.appendChild(legend);
-    for (const field of group.fields) {
-      fieldset.appendChild(buildSelectField(group.id, field));
-    }
-    els.formGroups.appendChild(fieldset);
+    els.formGroups.appendChild(buildGroupFieldset(group));
   }
   // Le groupe "general" est rendu en premier, avant les 4 colonnes.
   const generalGroup = FIELD_GROUPS.find((g) => g.id === 'general');
   if (generalGroup) {
-    const fieldset = document.createElement('fieldset');
-    fieldset.className = 'group-block group-general';
-    const legend = document.createElement('legend');
-    legend.textContent = generalGroup.title;
-    fieldset.appendChild(legend);
-    for (const field of generalGroup.fields) {
-      fieldset.appendChild(buildSelectField(generalGroup.id, field));
-    }
-    els.formGroups.prepend(fieldset);
+    els.formGroups.prepend(buildGroupFieldset(generalGroup, 'group-block__fields--5'));
   }
 }
 
@@ -190,7 +189,7 @@ async function renderList() {
     const tdActions = document.createElement('td');
     const btnView = document.createElement('button');
     btnView.type = 'button';
-    btnView.className = 'btn btn-small';
+    btnView.className = 'btn btn--outline-primary btn--small';
     btnView.textContent = 'Consulter';
     btnView.addEventListener('click', () => openDetail(record.id));
     tdActions.appendChild(btnView);
