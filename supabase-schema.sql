@@ -411,4 +411,31 @@ create trigger on_auth_user_created
   after insert on auth.users
   for each row execute procedure public.handle_new_user();
 
+-- ----------------------------------------------------------------------------
+-- 9. Table MATRICE_FONCTIONNELLE (bilan ORL/fonctionnel, formulaire autonome
+--    matrice-fonctionnelle/index.html — nom/prénom du patient renseignés
+--    directement dans la fiche, sans lien avec la table patients. Même
+--    politique ouverte que patients/formulaires ci-dessus : partagé entre
+--    tous les praticiens, y compris en accès anonyme (prototype).
+-- ----------------------------------------------------------------------------
+create table if not exists public.matrice_fonctionnelle (
+  id uuid primary key default gen_random_uuid(),
+  nom text not null,
+  prenom text not null,
+  date_fiche date not null,
+  data jsonb not null default '{}'::jsonb,
+  created_at timestamptz not null default now()
+);
+
+alter table public.matrice_fonctionnelle enable row level security;
+
+drop policy if exists "matrice_fonctionnelle: tous les praticiens accèdent à toutes les fiches" on public.matrice_fonctionnelle;
+create policy "matrice_fonctionnelle: tous les praticiens accèdent à toutes les fiches"
+  on public.matrice_fonctionnelle for all
+  using (true)
+  with check (true);
+
+grant select, insert, update, delete on public.matrice_fonctionnelle to anon, authenticated;
+
+
 -- Fin du script.

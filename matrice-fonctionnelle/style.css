@@ -159,6 +159,15 @@ legend {
 
 .empty-msg { color: #666; padding: 20px 0; }
 
+.error-msg {
+  color: var(--danger);
+  background: #fdecea;
+  border: 1px solid var(--danger);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-top: 12px;
+}
+
 .detail-actions {
   display: flex;
   gap: 10px;

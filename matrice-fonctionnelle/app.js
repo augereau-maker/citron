@@ -1,6 +1,7 @@
 import { FIELD_GROUPS } from './fields.js';
+import { supabase } from '../js/supabase-client.js';
 
-const STORAGE_KEY = 'citron_matrice_fonctionnelle_v1';
+const TABLE = 'matrice_fonctionnelle';
 
 const els = {
   tabs: document.querySelectorAll('.tab-btn'),
@@ -14,30 +15,59 @@ const els = {
   btnReset: document.getElementById('btn-reset'),
   fichesTbody: document.getElementById('fiches-tbody'),
   listEmpty: document.getElementById('list-empty'),
+  listError: document.getElementById('list-error'),
   detailContent: document.getElementById('detail-content'),
   btnPrint: document.getElementById('btn-print'),
   btnEdit: document.getElementById('btn-edit'),
   btnDelete: document.getElementById('btn-delete'),
   btnBack: document.getElementById('btn-back'),
+  formError: document.getElementById('form-error'),
 };
 
 let editingId = null;
 let currentDetailId = null;
 
-function loadRecords() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-  } catch {
-    return [];
-  }
+function rowToRecord(row) {
+  return { id: row.id, nom: row.nom, prenom: row.prenom, date: row.date_fiche, ...row.data };
 }
 
-function saveRecords(records) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+function recordToRow(data) {
+  const { nom, prenom, date, ...rest } = data;
+  return { nom, prenom, date_fiche: date, data: rest };
 }
 
-function makeId() {
-  return (crypto.randomUUID && crypto.randomUUID()) || `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+async function fetchRecords() {
+  const { data, error } = await supabase
+    .from(TABLE)
+    .select('id, nom, prenom, date_fiche, data')
+    .order('date_fiche', { ascending: false });
+  if (error) throw error;
+  return data.map(rowToRecord);
+}
+
+async function fetchRecordById(id) {
+  const { data, error } = await supabase
+    .from(TABLE)
+    .select('id, nom, prenom, date_fiche, data')
+    .eq('id', id)
+    .single();
+  if (error) throw error;
+  return rowToRecord(data);
+}
+
+async function insertRecord(data) {
+  const { error } = await supabase.from(TABLE).insert(recordToRow(data));
+  if (error) throw error;
+}
+
+async function updateRecord(id, data) {
+  const { error } = await supabase.from(TABLE).update(recordToRow(data)).eq('id', id);
+  if (error) throw error;
+}
+
+async function deleteRecord(id) {
+  const { error } = await supabase.from(TABLE).delete().eq('id', id);
+  if (error) throw error;
 }
 
 function switchView(name) {
@@ -134,9 +164,18 @@ function resetForm() {
   editingId = null;
 }
 
-function renderList() {
-  const records = loadRecords().sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+async function renderList() {
+  els.listError.classList.add('hidden');
   els.fichesTbody.innerHTML = '';
+  let records = [];
+  try {
+    records = await fetchRecords();
+  } catch (err) {
+    els.listError.textContent = `Impossible de charger les fiches : ${err.message}`;
+    els.listError.classList.remove('hidden');
+    els.listEmpty.classList.add('hidden');
+    return;
+  }
   els.listEmpty.classList.toggle('hidden', records.length > 0);
   for (const record of records) {
     const tr = document.createElement('tr');
@@ -167,9 +206,14 @@ function formatDate(iso) {
   return `${d}/${m}/${y}`;
 }
 
-function openDetail(id) {
-  const record = loadRecords().find((r) => r.id === id);
-  if (!record) return;
+async function openDetail(id) {
+  let record;
+  try {
+    record = await fetchRecordById(id);
+  } catch (err) {
+    alert(`Impossible de charger la fiche : ${err.message}`);
+    return;
+  }
   currentDetailId = id;
   els.detailContent.innerHTML = buildDetailHtml(record);
   switchView('detail');
@@ -214,50 +258,64 @@ for (const btn of els.tabs) {
   });
 }
 
-els.form.addEventListener('submit', (event) => {
+els.form.addEventListener('submit', async (event) => {
   event.preventDefault();
+  els.formError.classList.add('hidden');
   const data = collectFormData();
   if (!data.nom || !data.prenom) return;
 
-  const records = loadRecords();
-  if (editingId) {
-    const idx = records.findIndex((r) => r.id === editingId);
-    if (idx !== -1) records[idx] = { ...records[idx], ...data };
-  } else {
-    records.push({ id: makeId(), ...data });
+  try {
+    if (editingId) {
+      await updateRecord(editingId, data);
+    } else {
+      await insertRecord(data);
+    }
+  } catch (err) {
+    els.formError.textContent = `Échec de l'enregistrement : ${err.message}`;
+    els.formError.classList.remove('hidden');
+    return;
   }
-  saveRecords(records);
+
   editingId = null;
   resetForm();
-  renderList();
   switchView('list');
+  renderList();
 });
 
 els.btnReset.addEventListener('click', resetForm);
 
 els.btnPrint.addEventListener('click', () => window.print());
 
-els.btnEdit.addEventListener('click', () => {
-  const record = loadRecords().find((r) => r.id === currentDetailId);
-  if (!record) return;
+els.btnEdit.addEventListener('click', async () => {
+  let record;
+  try {
+    record = await fetchRecordById(currentDetailId);
+  } catch (err) {
+    alert(`Impossible de charger la fiche : ${err.message}`);
+    return;
+  }
   editingId = record.id;
   fillFormWithRecord(record);
   switchView('form');
 });
 
-els.btnDelete.addEventListener('click', () => {
+els.btnDelete.addEventListener('click', async () => {
   if (!confirm('Supprimer définitivement cette fiche ?')) return;
-  const records = loadRecords().filter((r) => r.id !== currentDetailId);
-  saveRecords(records);
+  try {
+    await deleteRecord(currentDetailId);
+  } catch (err) {
+    alert(`Échec de la suppression : ${err.message}`);
+    return;
+  }
   currentDetailId = null;
-  renderList();
   switchView('list');
+  renderList();
 });
 
 els.btnBack.addEventListener('click', () => {
   currentDetailId = null;
-  renderList();
   switchView('list');
+  renderList();
 });
 
 // --- Initialisation ---
