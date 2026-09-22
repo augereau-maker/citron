@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Évaluation Matrice Fonctionnelle</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="app-header no-print">
+  <h1>Évaluation Matrice Fonctionnelle</h1>
+  <nav class="tabs">
+    <button type="button" class="tab-btn active" data-view="form">Nouvelle fiche</button>
+    <button type="button" class="tab-btn" data-view="list">Fiches enregistrées</button>
+  </nav>
+</header>
+
+<main>
+
+  <section id="view-form" class="view">
+    <form id="matrice-form">
+      <fieldset class="patient-block">
+        <legend>Patient</legend>
+        <div class="field">
+          <label for="input-nom">Nom</label>
+          <input type="text" id="input-nom" name="nom" required />
+        </div>
+        <div class="field">
+          <label for="input-prenom">Prénom</label>
+          <input type="text" id="input-prenom" name="prenom" required />
+        </div>
+        <div class="field">
+          <label for="input-date">Date de la fiche</label>
+          <input type="date" id="input-date" name="date" required />
+        </div>
+      </fieldset>
+
+      <div id="form-groups"></div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Enregistrer la fiche</button>
+        <button type="button" id="btn-reset" class="btn">Réinitialiser</button>
+      </div>
+    </form>
+  </section>
+
+  <section id="view-list" class="view hidden">
+    <table class="fiches-table">
+      <thead>
+        <tr><th>Nom</th><th>Prénom</th><th>Date</th><th>Actions</th></tr>
+      </thead>
+      <tbody id="fiches-tbody"></tbody>
+    </table>
+    <p id="list-empty" class="empty-msg hidden">Aucune fiche enregistrée.</p>
+  </section>
+
+  <section id="view-detail" class="view hidden">
+    <div class="detail-actions no-print">
+      <button type="button" id="btn-print" class="btn btn-primary">🖨️ Imprimer</button>
+      <button type="button" id="btn-edit" class="btn">Modifier</button>
+      <button type="button" id="btn-delete" class="btn btn-danger">Supprimer</button>
+      <button type="button" id="btn-back" class="btn">← Retour à la liste</button>
+    </div>
+    <div id="detail-content" class="printable"></div>
+  </section>
+
+</main>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

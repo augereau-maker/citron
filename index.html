@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CITRON — Coordination Interdisciplinaire des Troubles Respiratoires et Obstructifs Nocturnes</title>
+<meta name="description" content="CITRON coordonne orthodontiste, ORL, orthophoniste, kinésithérapeute, allergologue et parents autour d'un carnet partagé, pour dépister et suivre les troubles respiratoires obstructifs nocturnes de l'enfant." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ======================================================================
+     ÉCRAN 1 — LANDING PAGE
+====================================================================== -->
+<section id="screen-landing">
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a href="#hero" class="logo-block">
+        <img class="brand-logo" src="assets/citron-logo.png" alt="CITRON" />
+        <p class="logo-tagline"><span class="logo-tagline__accent">C</span>oordination <span class="logo-tagline__accent">I</span>nterdisciplinaire des <span class="logo-tagline__accent">T</span>roubles <span class="logo-tagline__accent">R</span>espiratoires et <span class="logo-tagline__accent">O</span>bstructifs <span class="logo-tagline__accent">N</span>octurnes</p>
+      </a>
+
+      <button type="button" class="nav-toggle" id="btn-nav-toggle" aria-expanded="false" aria-controls="site-header-menu" aria-label="Ouvrir le menu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <div class="site-header__menu" id="site-header-menu">
+        <nav class="site-nav" aria-label="Navigation principale">
+          <a href="#hero" class="site-nav__link is-active">Accueil</a>
+          <a href="#a-propos" class="site-nav__link">À propos</a>
+          <a href="#fonctionnalites" class="site-nav__link">Fonctionnalités</a>
+          <a href="#ressources" class="site-nav__link">Ressources</a>
+        </nav>
+
+        <div class="site-header__actions">
+          <button class="btn btn--outline-primary" id="btn-espace-praticien-nav" data-action="espace-praticien">
+            <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v4.5a2.5 2.5 0 0 0 5 0V3"/><path d="M7.5 9v3a5.5 5.5 0 0 0 11 0V9.8"/><circle cx="18.5" cy="8.3" r="1.4"/><circle cx="13" cy="17.5" r="2.3"/></svg>
+            Espace Praticien
+          </button>
+          <button class="btn btn--fill-secondary" id="btn-espace-patient-nav" data-action="espace-patient">
+            <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c0-3.6 3.1-6.5 7-6.5s7 2.9 7 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            Espace Patient
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO (mobile-first : voir styles.css, base = smartphone) -->
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+
+        <div class="hero-content">
+          <h1 class="hero-title">Une approche globale pour des parcours de soins plus sereins</h1>
+          <p class="hero-description">
+            CITRON® est une plateforme numérique qui facilite la coordination entre les
+            professionnels de santé et accompagne les familles tout au long du parcours de
+            soins, pour une meilleure prise en charge des troubles respiratoires et
+            obstructifs du sommeil.
+          </p>
+          <p class="hero-baseline">Mieux respirer,<br>mieux grandir,<br>mieux dormir.</p>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <img class="hero-child" src="assets/enfant-sommeil.png" width="900" height="600" alt="" />
+          <img class="hero-doctor" src="assets/mascotte-citron-hd.png" width="1226" height="1283" alt="" fetchpriority="high" />
+          <svg class="doodle doodle--moon" viewBox="0 0 40 40" aria-hidden="true"><path d="M24 4a16 16 0 1 0 12 26 13 13 0 0 1-12-26Z" fill="currentColor"/></svg>        </div>
+
+      </div>
+    </section>
+
+    <!-- DEUX ESPACES -->
+    <section class="spaces-intro wrap" id="a-propos">
+      <div class="space-panel space-panel--praticien">
+        <div class="space-panel__header">
+          <div class="space-panel__icon">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="currentColor" opacity="0.15"/><circle cx="20" cy="15" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 31c0-6 5-10.5 11-10.5S31 25 31 31" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h2>Espace<br>Praticien</h2>
+        </div>
+        <p class="space-panel__intro">Des outils pour une coordination plus fluide et des soins plus efficaces.</p>
+        
+        <div class="space-panel__body">
+          <div class="space-panel__list-wrap">
+            <ul class="check-list">
+              <li>Partage d'informations sécurisé</li>
+              <li>Suivi des patients et des parcours</li>
+              <li>Outils de coordination pluridisciplinaire</li>
+              <li>Accès aux ressources et recommandations</li>
+              <li>Simplification des tâches administratives</li>
+            </ul>
+            <button class="btn btn--fill-primary" id="btn-espace-praticien-card" data-action="espace-praticien">
+              Accéder à l'espace praticien →
+            </button>
+          </div>
+          <div class="space-panel__visual">
+            <img class="device-photo device-photo--laptop" src="assets/app-mockup-laptop.png" alt="Tableau de bord CITRON sur ordinateur portable" />
+            <p class="handwritten card-handwritten card-handwritten--praticien">Une coordination<br>au service de chaque enfant</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-panel space-panel--patient">
+        <div class="space-panel__header">
+          <div class="space-panel__icon">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="currentColor" opacity="0.15"/><circle cx="14" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="27" cy="16" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 31c0-5 4-9 9-9 4 0 7 2.5 8.5 6M22 31c0-4 3.3-7.5 8-7.5S31 27 31 31" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h2>Espace<br>Patient</h2>
+        </div>
+        <p class="space-panel__intro">Un accompagnement simple et rassurant, à chaque étape.</p>
+        
+        <div class="space-panel__body">
+          <div class="space-panel__list-wrap">
+            <ul class="check-list">
+              <li>Informations sur le parcours de soins</li>
+              <li>Conseils et recommandations personnalisés</li>
+              <li>Accès aux documents et ressources</li>
+              <li>Suivi de l'évolution</li>
+              <li>Échanges facilités avec l'équipe soignante</li>
+            </ul>
+            <button class="btn btn--fill-secondary" id="btn-espace-patient-card" data-action="espace-patient">
+              Accéder à l'espace patient →
+            </button>
+          </div>
+          <div class="space-panel__visual">
+            <img class="device-photo device-photo--phone" src="assets/app-mockup-phone.png" alt="Application CITRON sur smartphone" />
+            <p class="handwritten card-handwritten card-handwritten--patient">
+              Des réponses<br>à chaque étape
+              <svg class="handwritten__heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21C4 15.5 0 11.6 0 7.2 0 3.6 2.8 1 6.2 1c2 0 3.9 1 5.8 3.3C13.9 2 15.8 1 17.8 1 21.2 1 24 3.6 24 7.2c0 4.4-4 8.3-12 13.8Z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PENSÉE POUR TOUS -->
+    <section class="principles-section wrap" id="fonctionnalites">
+      <h2 class="section-title">
+        <svg class="title-deco" viewBox="0 0 24 24"><path d="M4 12h4m12 0h-4m-6-6v4m0 8v-4" stroke="var(--color-lemon)" stroke-width="2.5" stroke-linecap="round"/></svg>
+        Une plateforme pensée pour tous
+        <svg class="title-deco" viewBox="0 0 24 24"><path d="M4 12h4m12 0h-4m-6-6v4m0 8v-4" stroke="var(--color-lemon)" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </h2>
+      <p class="section-subtitle">CITRON® s'appuie sur des principes forts pour offrir une prise en charge globale et coordonnée.</p>
+
+      <div class="principles-grid">
+        <article class="principle-item">
+          <span class="principle-icon principle-icon--pink">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20C5 15.8 2 12.6 2 8.8 2 5.9 4.3 3.6 7.1 3.6c1.7 0 3.4 1 4.9 3 1.5-2 3.2-3 4.9-3 2.8 0 5.1 2.3 5.1 5.2 0 3.8-3 7-10 11.2Z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+          </span>
+          <h3>Une approche globale</h3>
+          <p>De la prévention au suivi à long terme.</p>
+        </article>
+
+        <article class="principle-item">
+          <span class="principle-icon principle-icon--green">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="6.5" r="3" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="5.5" cy="10" r="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="18.5" cy="10" r="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-3.3 2.6-5.6 8-5.6s8 2.3 8 5.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </span>
+          <h3>Une coordination pluridisciplinaire</h3>
+          <p>Entre tous les acteurs du parcours de soins.</p>
+        </article>
+
+        <article class="principle-item">
+          <span class="principle-icon principle-icon--blue">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 16c-3 0-5-2.1-5-4.7 0-2.3 1.8-4.2 4.1-4.5C6.8 4 9.3 2 12.2 2c3.4 0 6.1 2.6 6.4 5.9 2.4.4 4.2 2.4 4.2 4.8 0 2.7-2.3 4.9-5.1 4.9H7Z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+          </span>
+          <h3>Une meilleure qualité de vie</h3>
+          <p>Pour les enfants et leurs familles.</p>
+        </article>
+
+        <article class="principle-item">
+          <span class="principle-icon principle-icon--yellow">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3.2v5.4c0 5.3-3.4 9.4-8 11.2-4.6-1.8-8-5.9-8-11.2V5.2Z" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8.5 12l2.4 2.4L16 9.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>Des outils sécurisés</h3>
+          <p>Des données protégées et un accès simplifié.</p>
+        </article>
+
+        <article class="principle-item">
+          <span class="principle-icon principle-icon--purple">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21h6M12 3a6.5 6.5 0 0 0-4 11.6c.7.6 1 1.2 1 2.1V17h6v-.3c0-.9.3-1.5 1-2.1A6.5 6.5 0 0 0 12 3Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>Une plateforme évolutive</h3>
+          <p>Toujours plus d'outils et de ressources.</p>
+        </article>
+
+        <article class="principle-item">
+          <span class="principle-icon principle-icon--teal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20c9 0 16-7 16-16-9 0-16 7-16 16Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 16c2-2 4.5-4.5 8-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </span>
+          <h3>Une vision durable</h3>
+          <p>Pour un avenir plus sain, aujourd'hui et demain.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- COMMENT ÇA MARCHE -->
+    <section class="steps-band" id="ressources">
+      <div class="steps-section wrap">
+
+      <h2 class="section-title">
+        <svg class="title-deco" viewBox="0 0 24 24"><path d="M6 12h12" stroke="var(--c-ortho)" stroke-width="3" stroke-linecap="round"/></svg>
+        Comment ça marche ?
+        <svg class="title-deco" viewBox="0 0 24 24"><path d="M6 12h12" stroke="var(--c-ortho)" stroke-width="3" stroke-linecap="round"/></svg>
+      </h2>
+      <p class="section-subtitle">Une démarche simple en 4 étapes</p>
+
+      <div class="steps-row">
+        <div class="step-item">
+          <span class="step-icon step-icon--blue">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="17.5" cy="17.5" r="3.8" class="step-icon-badge"/><path d="M17.5 15.8v3.4M15.8 17.5h3.4" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <span class="step-num step-num--blue">1</span>
+          </span>
+          <h3>Je m'inscris</h3>
+          <p>Je crée mon compte praticien ou patient.</p>
+        </div>
+
+        <svg class="step-arrow" viewBox="0 0 60 20" aria-hidden="true"><path d="M0 10h50" stroke="currentColor" stroke-width="2" stroke-dasharray="5 5"/><path d="M44 4l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+        <div class="step-item">
+          <span class="step-icon step-icon--green">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 20c0-3.3 2.7-5.8 6-5.8s6 2.5 6 5.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="18" cy="9" r="2.3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M15 20c.2-2.6 1.8-4.4 4-4.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="step-num step-num--green">2</span>
+          </span>
+          <h3>J'accède aux outils</h3>
+          <p>Des solutions adaptées à mon profil.</p>
+        </div>
+
+        <svg class="step-arrow" viewBox="0 0 60 20" aria-hidden="true"><path d="M0 10h50" stroke="currentColor" stroke-width="2" stroke-dasharray="5 5"/><path d="M44 4l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+        <div class="step-item">
+          <span class="step-icon step-icon--orange">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="6" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="19" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.2 7.2 10.3 17M15.8 7.2 13.7 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <span class="step-num step-num--orange">3</span>
+          </span>
+          <h3>Je coordonne et j'échange</h3>
+          <p>Avec les professionnels et/ou l'équipe soignante.</p>
+        </div>
+
+        <svg class="step-arrow" viewBox="0 0 60 20" aria-hidden="true"><path d="M0 10h50" stroke="currentColor" stroke-width="2" stroke-dasharray="5 5"/><path d="M44 4l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+        <div class="step-item">
+          <span class="step-icon step-icon--purple">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8.5 13.5c1 1.2 2 1.8 3.5 1.8s2.5-.6 3.5-1.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="9" cy="9.5" r="1" fill="currentColor"/><circle cx="15" cy="9.5" r="1" fill="currentColor"/></svg>
+            <span class="step-num step-num--purple">4</span>
+          </span>
+          <h3>Je suis accompagné</h3>
+          <p>Tout au long du parcours de soins.</p>
+        </div>
+      </div>
+
+      </div>
+    </section>
+
+    <!-- BANNIÈRE DE CLÔTURE -->
+    <section class="closing-banner">
+      <div class="wrap closing-content">
+        <div class="closing-left">
+          <p class="handwritten handwritten--banner">Ensemble,<br>pour des enfants qui respirent,<br>qui grandissent et qui dorment mieux.<br>
+            <svg class="handwritten__heart" viewBox="0 0 24 22" aria-hidden="true" style="width: 24px; height: 24px;"><path d="M12 21C4 15.5 0 11.6 0 7.2 0 3.6 2.8 1 6.2 1c2 0 3.9 1 5.8 3.3C13.9 2 15.8 1 17.8 1 21.2 1 24 3.6 24 7.2c0 4.4-4 8.3-12 13.8Z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+          </p>
+        </div>
+
+        <div class="closing-right">
+          <div class="closing-logo-block">
+            <img class="brand-logo" src="assets/citron-logo.png" alt="CITRON" />
+            <p class="logo-tagline"><span class="logo-tagline__accent">C</span>oordination <span class="logo-tagline__accent">I</span>nterdisciplinaire des <span class="logo-tagline__accent">T</span>roubles <span class="logo-tagline__accent">R</span>espiratoires et <span class="logo-tagline__accent">O</span>bstructifs <span class="logo-tagline__accent">N</span>octurnes</p>
+          </div>
+          <div class="closing-divider"></div>
+          <p class="closing-text">Une plateforme au service<br>d'une prise en charge globale<br>et coordonnée.</p>
+        </div>
+      </div>
+      
+      <!-- Décorations de fond -->
+      <svg class="closing-doodle closing-doodle--leaf-left" viewBox="0 0 60 60" aria-hidden="true"><path d="M5 55C5 30 25 10 55 8 53 35 33 52 5 55Z" fill="currentColor"/></svg>
+      <svg class="closing-doodle closing-doodle--sun" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="14" fill="currentColor"/></svg>
+      <svg class="closing-doodle closing-doodle--cloud" viewBox="0 0 100 60" aria-hidden="true"><path d="M20 40a15 15 0 0 1 0-30 20 20 0 0 1 35-5 25 25 0 0 1 25 35H20Z" fill="#F0F6FF"/></svg>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>CITRON® — COORDINATION · SANTÉ · BIEN-ÊTRE · AVENIR</p>
+    </div>
+  </footer>
+</section>
+
+<!-- ======================================================================
+     ÉCRAN 2 — CONNEXION / INSCRIPTION
+====================================================================== -->
+<section id="screen-auth" hidden>
+  <div class="auth-shell">
+    <button class="btn btn--text" id="btn-back-to-landing">← Retour accueil</button>
+
+    <div class="auth-card">
+      <img class="brand-logo brand-logo--center" src="assets/citron-logo.png" alt="CITRON" />
+      <p id="auth-intro" class="auth-intro">Connectez-vous à votre espace professionnel CITRON.</p>
+
+      <form id="form-login" class="auth-form">
+        <label>
+          Identifiant
+          <input type="text" name="identifier" required autocomplete="username" />
+        </label>
+        <label>
+          Mot de passe
+          <div class="password-field">
+            <input type="password" name="password" required autocomplete="current-password" />
+            <button type="button" class="password-toggle" data-toggle-password aria-label="Afficher le mot de passe" aria-pressed="false">
+              <svg class="password-toggle__icon password-toggle__icon--show" viewBox="0 0 24 24" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+              <svg class="password-toggle__icon password-toggle__icon--hide" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.3 21.3 0 0 1 5.06-5.94M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 11 7 11 7a21.4 21.4 0 0 1-2.16 3.19M14.12 14.12a3 3 0 1 1-4.24-4.24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 1l22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </label>
+        <p id="login-error" class="form-feedback is-error" role="alert"></p>
+        <button type="submit" class="btn btn--primary btn--block">Se connecter</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     ÉCRAN 3 — DASHBOARD PRATICIEN
+====================================================================== -->
+<section id="screen-dashboard" hidden>
+  <header class="dash-header">
+    <div class="wrap dash-header__inner">
+      <img class="brand-logo" src="assets/citron-logo.png" alt="CITRON" />
+      <div class="dash-header__user">
+        <div class="dash-header__identity">
+          <span id="dashboard-user-name">—</span>
+          <span id="dashboard-user-role" class="dash-header__role">—</span>
+        </div>
+        <button class="btn btn--ghost" id="btn-logout">Déconnexion</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap dashboard">
+    <!-- VUE 1 : ACCUEIL DASHBOARD -->
+    <div id="dashboard-home">
+      <section class="dashboard-welcome">
+        <div class="dashboard-welcome__text">
+          <div class="hello-decoration" aria-hidden="true"><span></span><span></span><span></span></div>
+          <h1 class="welcome-title">Bonjour Docteur !</h1>
+          <p class="welcome-subtitle">Votre espace prescripteur CITRON</p>
+        </div>
+
+        <div class="dashboard-welcome__slogan" aria-hidden="true">
+          <p class="slogan">Ensemble<br>pour des parcours<br>de soins plus sereins</p>
+          <svg class="slogan-underline" viewBox="0 0 160 14" aria-hidden="true"><path d="M4 9c30-8 100-8 152 0" stroke="#FFC400" stroke-width="4" stroke-linecap="round" fill="none"/></svg>
+          <svg class="slogan-heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21C4 15.5 0 11.6 0 7.2 0 3.6 2.8 1 6.2 1c2 0 3.9 1 5.8 3.3C13.9 2 15.8 1 17.8 1 21.2 1 24 3.6 24 7.2c0 4.4-4 8.3-12 13.8Z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+
+        <img class="dashboard-mascot" src="assets/mascotte-citron-hd.png" alt="" aria-hidden="true" width="1226" height="1283" />
+      </section>
+
+      <section class="stats-row">
+        <div class="stat-card stat-card--blue">
+          <span class="stat-icon stat-icon--blue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          </span>
+          <span class="stat-card__body">
+            <span class="stat-card__value" id="stat-patients">0</span>
+            <span class="stat-card__label">Patients suivis</span>
+          </span>
+          <span class="stat-watermark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2"/><circle cx="17" cy="9" r="2.6"/><path d="M14.5 13.3c2.9.3 5 2.6 5 5.7"/></svg>
+          </span>
+        </div>
+        <div class="stat-card stat-card--green">
+          <span class="stat-icon stat-icon--green" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3h6v2a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V3Z"/><path d="M8 11h8M8 15h8M8 19h5"/></svg>
+          </span>
+          <span class="stat-card__body">
+            <span class="stat-card__value" id="stat-forms">0</span>
+            <span class="stat-card__label">Consultations saisies</span>
+          </span>
+          <span class="stat-watermark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 11h8M8 15h8M8 19h5"/></svg>
+          </span>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <div class="panel panel--wide panel--search" id="panel-patient-search">
+          <div class="panel-header">
+            <div class="panel-header__title">
+              <span class="panel-icon panel-icon--green" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              </span>
+              <h2>Rechercher un patient</h2>
+            </div>
+            <button type="button" class="btn btn--text" id="btn-open-new-patient">+ Nouveau patient</button>
+          </div>
+
+          <form id="form-patient-search" class="dyn-form dyn-form--wide" autocomplete="off">
+            <div class="field-row">
+              <label>
+                Prénom
+                <input type="text" id="search-query-a" name="queryA" list="patient-firstnames" autocomplete="off" />
+              </label>
+              <label>
+                Nom
+                <input type="text" id="search-query-b" name="queryB" list="patient-lastnames" autocomplete="off" />
+              </label>
+              <button type="submit" class="btn search-submit-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                Rechercher le patient
+              </button>
+            </div>
+            <datalist id="patient-firstnames"></datalist>
+            <datalist id="patient-lastnames"></datalist>
+          </form>
+
+          <ul id="patient-search-results" class="patient-list patient-list--table"></ul>
+        </div>
+
+        <div class="panel panel--wide">
+          <div class="panel-header">
+            <div class="panel-header__title">
+              <span class="panel-icon panel-icon--blue" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2"/><circle cx="17" cy="9" r="2.6"/><path d="M14.5 13.3c2.9.3 5 2.6 5 5.7"/></svg>
+              </span>
+              <h2>Nos patients</h2>
+            </div>
+          </div>
+          <ul id="patient-list" class="patient-list patient-list--table"></ul>
+        </div>
+      </section>
+
+      <p class="dashboard-trust" aria-hidden="true">Merci<br>pour votre confiance <svg class="dashboard-trust__heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21C4 15.5 0 11.6 0 7.2 0 3.6 2.8 1 6.2 1c2 0 3.9 1 5.8 3.3C13.9 2 15.8 1 17.8 1 21.2 1 24 3.6 24 7.2c0 4.4-4 8.3-12 13.8Z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></p>
+    </div>
+
+    <!-- VUE 2 : PARCOURS COORDONNÉ D'UN PATIENT -->
+    <div id="dashboard-patient" hidden>
+      <button type="button" class="btn btn--text" id="btn-back-to-dashboard-home">← Retour au dashboard</button>
+
+      <div class="patient-workspace-top">
+        <div class="patient-workspace-identity">
+          <span class="patient-avatar" id="patient-workspace-avatar" aria-hidden="true">—</span>
+          <div class="patient-workspace-header">
+            <h2 id="patient-workspace-name">—</h2>
+            <p id="patient-workspace-meta" class="patient-workspace-meta"></p>
+          </div>
+        </div>
+
+        <div class="patient-workspace-cards">
+          <div class="patient-credentials">
+            <div class="patient-credentials__title">
+              <span class="patient-credentials__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              </span>
+              <div>
+                <h3>Accès Espace Patient</h3>
+                <p class="patient-credentials__hint">À transmettre au patient pour se connecter à l'Espace Patient.</p>
+              </div>
+            </div>
+            <div class="patient-credentials__row">
+              <span class="patient-credentials__label">Identifiant</span>
+              <span class="patient-credentials__value-group">
+                <span class="patient-credentials__value" id="patient-credentials-login">—</span>
+                <button type="button" class="copy-btn" data-copy-target="patient-credentials-login" aria-label="Copier l'identifiant">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>
+                </button>
+              </span>
+            </div>
+            <div class="patient-credentials__row">
+              <span class="patient-credentials__label">Mot de passe</span>
+              <span class="patient-credentials__value-group">
+                <span class="patient-credentials__value" id="patient-credentials-password">—</span>
+                <button type="button" class="copy-btn" data-copy-target="patient-credentials-password" aria-label="Copier le mot de passe">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>
+                </button>
+              </span>
+            </div>
+          </div>
+
+          <div class="patient-info-card">
+            <div class="patient-credentials__title">
+              <span class="patient-credentials__icon patient-credentials__icon--green" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+              </span>
+              <h3>Informations patient</h3>
+            </div>
+            <div class="patient-credentials__row patient-credentials__row--first">
+              <span class="patient-credentials__label">Dernière consultation</span>
+            </div>
+            <p class="patient-info-card__value" id="patient-workspace-last-consultation">—</p>
+            <div class="patient-credentials__row">
+              <span class="patient-credentials__label">Statut</span>
+              <span class="status-pill">Actif</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="workspace-slogan" aria-hidden="true">Des parcours<br>plus sains,<br>ensemble</p>
+      </div>
+
+      <div class="panel" id="panel-specialties" hidden>
+        <div class="panel-header">
+          <div class="panel-header__title">
+            <span class="panel-icon panel-icon--blue" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2"/><circle cx="17" cy="9" r="2.6"/><path d="M14.5 13.3c2.9.3 5 2.6 5 5.7"/></svg>
+            </span>
+            <div>
+              <h2>Spécialités des prescripteurs</h2>
+              <p class="panel-header__subtitle">Sélectionnez votre spécialité, pour la saisie d'une consultation</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="specialty-grid">
+          <button type="button" class="specialty-btn specialty-btn--ortho" data-specialty="orthodontiste">
+            <span class="specialty-btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-2.2 0-3.5 1.1-4.3 1.1-1 0-1.9-.6-2.9-.6C3 3.5 2 5 2 7.3c0 3 1.4 8 2.6 10.7.6 1.4 1.2 2.3 2.1 2.3.9 0 1-1.6 1.4-3.1.3-1.2.7-2.4 1.9-2.4s1.6 1.2 1.9 2.4c.4 1.5.5 3.1 1.4 3.1.9 0 1.5-.9 2.1-2.3C16.6 15.3 18 10.3 18 7.3c0-2.3-1-3.8-2.8-3.8-1 0-1.9.6-2.9.6C11.5 4.1 10.2 3 12 3Z"/><path d="M7 8.5h10"/></svg>
+            </span>
+            <span class="specialty-btn__label">Consultation<br>Orthodontie</span>
+          </button>
+          <button type="button" class="specialty-btn specialty-btn--kine" data-specialty="kine">
+            <span class="specialty-btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>
+            </span>
+            <span class="specialty-btn__label">Consultation<br>Kinésithérapeute</span>
+          </button>
+          <button type="button" class="specialty-btn specialty-btn--phonie" data-specialty="orthophoniste">
+            <span class="specialty-btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+            </span>
+            <span class="specialty-btn__label">Consultation<br>Orthophoniste</span>
+          </button>
+          <button type="button" class="specialty-btn specialty-btn--orl" data-specialty="orl">
+            <span class="specialty-btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 1 1 8 5.7c-1 .4-1.5 1.1-1.5 2.1v.2a2.5 2.5 0 0 1-5 0"/><path d="M9 9a3 3 0 0 1 6 0c0 1.5-1.5 2-1.5 3.5"/></svg>
+            </span>
+            <span class="specialty-btn__label">Consultation<br>ORL</span>
+          </button>
+          <button type="button" class="specialty-btn specialty-btn--allergo" data-specialty="allergologue">
+            <span class="specialty-btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4.5a2.5 2.5 0 1 1 2.5 2.5H2"/><path d="M12.5 19.5a2.5 2.5 0 1 0 2.5-2.5H2"/><path d="M17 12a3 3 0 1 1 3 3H2"/></svg>
+            </span>
+            <span class="specialty-btn__label">Consultation<br>Allergologue</span>
+          </button>
+          <button type="button" class="specialty-btn specialty-btn--osteo" data-specialty="osteopathe">
+            <span class="specialty-btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3M12 19v3M9 6l3-1 3 1M9 10l3 1 3-1M9 14l3-1 3 1M9 18l3 1 3-1"/></svg>
+            </span>
+            <span class="specialty-btn__label">Consultation<br>Ostéopathe</span>
+          </button>
+          <button type="button" class="specialty-btn specialty-btn--dentiste" data-specialty="dentiste">
+            <span class="specialty-btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-2.2 0-3.5 1.1-4.3 1.1-1 0-1.9-.6-2.9-.6C3 3.5 2 5 2 7.3c0 3 1.4 8 2.6 10.7.6 1.4 1.2 2.3 2.1 2.3.9 0 1-1.6 1.4-3.1.3-1.2.7-2.4 1.9-2.4s1.6 1.2 1.9 2.4c.4 1.5.5 3.1 1.4 3.1.9 0 1.5-.9 2.1-2.3C16.6 15.3 18 10.3 18 7.3c0-2.3-1-3.8-2.8-3.8-1 0-1.9.6-2.9.6C11.5 4.1 10.2 3 12 3Z"/></svg>
+            </span>
+            <span class="specialty-btn__label">Consultation<br>Chirurgien-Dentiste</span>
+          </button>
+        </div>
+      </div>
+
+      <div id="specialty-form-panel" class="panel" hidden>
+        <div class="panel-header">
+          <h2 id="specialty-form-title">—</h2>
+          <button type="button" class="btn btn--text" id="btn-close-specialty-form">Fermer</button>
+        </div>
+        <div id="specialty-form-container"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-header__title">
+            <span class="panel-icon panel-icon--blue" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3h6v2a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V3Z"/><path d="M8 11h8M8 15h8M8 19h5"/></svg>
+            </span>
+            <div>
+              <h2>Historique des consultations</h2>
+              <p class="panel-header__subtitle">Retrouvez ici l'ensemble des consultations du patient.</p>
+            </div>
+          </div>
+          <button type="button" class="btn btn--outline-primary" id="btn-add-consultation">+ Ajouter une consultation</button>
+        </div>
+        <ul id="patient-history-list" class="patient-list patient-list--history"></ul>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- ======================================================================
+     ÉCRAN 4 — ESPACE PATIENT
+====================================================================== -->
+<section id="screen-patient-portal" hidden>
+  <header class="dash-header">
+    <div class="wrap dash-header__inner">
+      <img class="brand-logo" src="assets/citron-logo.png" alt="CITRON" />
+      <div class="dash-header__user">
+        <div class="dash-header__identity">
+          <span id="patient-portal-name">—</span>
+          <span class="dash-header__role">Espace patient</span>
+        </div>
+        <button class="btn btn--ghost" id="btn-patient-logout">Déconnexion</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap dashboard">
+    <div class="panel">
+      <h2>Mes consultations</h2>
+      <ul id="patient-portal-list" class="patient-list"></ul>
+    </div>
+  </main>
+</section>
+
+<!-- ======================================================================
+     ÉCRAN 5 — ESPACE ADMINISTRATEUR
+====================================================================== -->
+<section id="screen-admin" hidden>
+  <header class="dash-header">
+    <div class="wrap dash-header__inner">
+      <div class="logo">
+        <span>CITR</span>
+        <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="22" r="14" fill="var(--color-lemon)"/>
+          <path d="M19 8 C25 6 30 11 29 16 C23 18 17 14 19 8 Z" fill="var(--color-secondary)"/>
+        </svg>
+        <span>N</span>
+      </div>
+      <div class="dash-header__user">
+        <div class="dash-header__identity">
+          <span>Administrateur</span>
+          <span class="dash-header__role">Espace admin</span>
+        </div>
+        <button class="btn btn--ghost" id="btn-admin-logout">Déconnexion</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap dashboard">
+    <div class="panel">
+      <h2>Tous les patients</h2>
+      <ul id="admin-patient-list" class="patient-list patient-list--admin-patients"></ul>
+    </div>
+
+    <div class="panel">
+      <h2>Consultations</h2>
+      <ul id="admin-formulaire-list" class="patient-list"></ul>
+    </div>
+
+    <div class="panel">
+      <h2>Créer un compte praticien</h2>
+      <form id="form-admin-create-practitioner" class="dyn-form" autocomplete="off">
+        <label>
+          Identifiant
+          <input type="text" name="login" required autocomplete="off" />
+        </label>
+        <div class="admin-generate-row">
+          <label class="admin-generate-row__field">
+            Mot de passe
+            <input type="text" id="admin-generated-password" name="password" readonly placeholder="Cliquez sur Générer" autocomplete="off" />
+          </label>
+          <button type="button" class="btn btn--outline-primary" id="btn-generate-practitioner-password">Générer</button>
+        </div>
+        <p id="admin-create-practitioner-feedback" class="form-feedback"></p>
+        <button type="submit" class="btn btn--primary">Créer le compte</button>
+      </form>
+    </div>
+
+    <div class="panel">
+      <h2>Comptes praticien</h2>
+      <ul id="admin-practitioner-list" class="patient-list"></ul>
+    </div>
+  </main>
+</section>
+
+<!-- Popups (inchangées) -->
+<div class="modal-overlay" id="modal-new-patient" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-new-patient-title">
+    <div class="modal-card__header">
+      <h2 id="modal-new-patient-title">Nouveau patient</h2>
+      <button type="button" class="modal-close" data-modal-close="modal-new-patient" aria-label="Fermer">×</button>
+    </div>
+    <form id="form-new-patient" class="dyn-form" autocomplete="off">
+      <div class="field-row">
+        <label>Prénom<input type="text" id="new-patient-field-a" name="fieldA" autocomplete="off" required /></label>
+        <label>Nom<input type="text" id="new-patient-field-b" name="fieldB" autocomplete="off" required /></label>
+      </div>
+      <label>Date de naissance<input type="date" id="new-patient-field-c" name="fieldC" autocomplete="off" /></label>
+      <p id="new-patient-feedback" class="form-feedback"></p>
+      <button type="submit" class="btn btn--primary">Créer le patient</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-form-summary" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="form-summary-title">
+    <div class="modal-card__header">
+      <h2 id="form-summary-title">—</h2>
+      <button type="button" class="modal-close" data-modal-close="modal-form-summary" aria-label="Fermer">×</button>
+    </div>
+    <p id="form-summary-confirmation" class="form-feedback is-success"></p>
+    <div id="form-summary-content" class="form-summary"></div>
+    <button type="button" class="btn btn--primary btn--block" data-modal-close="modal-form-summary">Fermer</button>
+  </div>
+</div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

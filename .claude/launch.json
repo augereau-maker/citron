@@ -1,0 +1,27 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "citron-static",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "10577"
+      ],
+      "port": 10577
+    },
+    {
+      "name": "mooh-web-dev",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "runtimeArgs": [
+        "C:\\Users\\admin\\Downloads\\MOOH\\PWA\\web\\node_modules\\vite\\bin\\vite.js",
+        "C:\\Users\\admin\\Downloads\\MOOH\\PWA\\web",
+        "--port",
+        "5173",
+        "--strictPort"
+      ],
+      "port": 5173
+    }
+  ]
+}
