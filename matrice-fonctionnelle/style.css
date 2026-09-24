@@ -445,10 +445,19 @@ legend {
 }
 
 .letterhead__contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   text-align: right;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--color-primary);
+}
+
+.letterhead__logo {
+  height: 44px;
+  width: auto;
+  margin-bottom: 6px;
 }
 
 .signature-block {
