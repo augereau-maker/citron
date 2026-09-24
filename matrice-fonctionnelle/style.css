@@ -579,8 +579,8 @@ legend {
 /* Miroir des règles d'impression ci-dessus, appliqué pendant la capture
    pour "Enregistrement PDF" (html2canvas ne déclenche pas @media print). */
 body.pdf-export .card.printable { border: none; box-shadow: none; padding: 0; }
-body.pdf-export .letterhead__logo-slot { position: relative; }
-body.pdf-export .letterhead__logo { position: absolute; right: 0; bottom: 0; height: 176px; width: auto; }
+body.pdf-export .letterhead__logo-slot { height: auto; }
+body.pdf-export .letterhead__logo { position: static; display: block; height: 100px; width: auto; }
 body.pdf-export .dl-2col {
   display: grid;
   grid-template-columns: max-content 1fr max-content 1fr;
