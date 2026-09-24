@@ -27,6 +27,7 @@ const els = {
   listError: document.getElementById('list-error'),
   detailContent: document.getElementById('detail-content'),
   btnPrint: document.getElementById('btn-print'),
+  btnPdf: document.getElementById('btn-pdf'),
   btnEdit: document.getElementById('btn-edit'),
   btnDelete: document.getElementById('btn-delete'),
   btnBack: document.getElementById('btn-back'),
@@ -35,6 +36,7 @@ const els = {
 
 let editingId = null;
 let currentDetailId = null;
+let currentDetailRecord = null;
 
 // ---------------------------------------------------------------------------
 // Accès aux données (Supabase)
@@ -569,6 +571,7 @@ async function openDetail(id) {
     return;
   }
   currentDetailId = id;
+  currentDetailRecord = record;
   els.detailContent.innerHTML = buildDetailHtml(record);
   switchView('detail');
 }
@@ -749,6 +752,27 @@ els.form.addEventListener('submit', async (event) => {
 els.btnReset.addEventListener('click', resetForm);
 
 els.btnPrint.addEventListener('click', () => window.print());
+
+els.btnPdf.addEventListener('click', async () => {
+  const record = currentDetailRecord;
+  if (!record) return;
+  document.body.classList.add('pdf-export');
+  await new Promise((r) => setTimeout(r, 50));
+  const filename = `${record.nom}_${record.prenom}_${record.date}`.replace(/\s+/g, '_') + '.pdf';
+  try {
+    await window.html2pdf().from(els.detailContent).set({
+      filename,
+      margin: 10,
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      pagebreak: { mode: ['css', 'legacy'] },
+    }).save();
+  } catch (err) {
+    alert(`Échec de la génération du PDF : ${err.message}`);
+  } finally {
+    document.body.classList.remove('pdf-export');
+  }
+});
 
 els.btnEdit.addEventListener('click', async () => {
   let record;
