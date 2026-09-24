@@ -498,7 +498,10 @@ function fillFormWithRecord(record) {
 
 function resetForm() {
   els.form.reset();
-  document.getElementById('input-date').value = new Date().toISOString().slice(0, 10);
+  const today = new Date().toISOString().slice(0, 10);
+  document.getElementById('input-date').value = today;
+  const dateCS = els.form.elements.namedItem('info_dateCS');
+  if (dateCS) dateCS.value = today;
   editingId = null;
 }
 
