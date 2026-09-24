@@ -693,11 +693,11 @@ function buildDetailHtml(record) {
     <h2 class="section-banner">3 — Évaluation de la denture</h2>
     <div class="detail-groups">${sectionsHtml(['occlusale', 'fonctionnelle', 'esthetique', 'clinique'])}</div>
     <h2 class="section-banner">4 — Évaluation faciale</h2>
-    <div class="detail-groups">${sectionsHtml(['faciale'])}</div>
+    <div class="detail-group detail-group--wide"><dl class="dl-2col">${detailFieldsHtml('faciale', SECTIONS.find((s) => s.id === 'faciale').fields, record)}</dl></div>
     <h2 class="section-banner">5 — Évaluation de l'ATM</h2>
     <div class="detail-group detail-group--wide">${detailAtmGridHtml(record)}<dl>${detailFieldsHtml('atm', SECTIONS.find((s) => s.id === 'atm').fields, record)}</dl></div>
     <h2 class="section-banner">6 — Évaluation de la personnalité</h2>
-    <div class="detail-groups">${sectionsHtml(['personnalite'])}</div>
+    <div class="detail-group detail-group--wide"><dl class="dl-2col">${detailFieldsHtml('personnalite', SECTIONS.find((s) => s.id === 'personnalite').fields, record)}</dl></div>
     ${detailProblemesHtml(record)}
     ${detailManagementHtml(record)}
     <div class="detail-group detail-group--wide">

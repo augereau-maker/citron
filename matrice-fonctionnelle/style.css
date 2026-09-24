@@ -562,6 +562,15 @@ legend {
   .card.printable { border: none; box-shadow: none; padding: 0; }
   .letterhead__logo-slot { position: relative; }
   .letterhead__logo { position: absolute; right: 0; bottom: 0; height: 176px; width: auto; }
+  .dl-2col {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content 1fr;
+    column-gap: 18px;
+    row-gap: 2px;
+    align-items: baseline;
+  }
+  .dl-2col dt { margin-top: 4px; }
+  .dl-2col dd { margin-bottom: 0; }
   .detail-groups { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .detail-group { break-inside: avoid; }
   .section-banner { break-after: avoid; }
