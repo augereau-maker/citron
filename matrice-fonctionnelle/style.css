@@ -420,6 +420,57 @@ legend {
   flex-wrap: wrap;
 }
 
+.letterhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.letterhead__name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--color-primary-dark);
+}
+
+.letterhead__subtitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.letterhead__contact {
+  text-align: right;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.signature-block {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  break-inside: avoid;
+}
+
+.signature-block__img {
+  height: 90px;
+  width: auto;
+}
+
+.signature-block__caption {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-top: 4px;
+}
+
 .printable h1 {
   font-family: var(--font-display);
   font-weight: 800;

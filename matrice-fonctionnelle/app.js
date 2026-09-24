@@ -663,6 +663,17 @@ function buildDetailHtml(record) {
   const sectionsHtml = (ids) => ids.map((id) => detailSectionHtml(SECTIONS.find((s) => s.id === id), record)).join('');
 
   return `
+    <div class="letterhead">
+      <div class="letterhead__identity">
+        <div class="letterhead__name">Docteur Mélanie FABRE</div>
+        <div class="letterhead__subtitle">Chirurgien-Dentiste</div>
+        <div class="letterhead__subtitle">Pratique limitée à l'Orthodontie</div>
+      </div>
+      <div class="letterhead__contact">
+        <div>4 av de la Victoire 97400 Saint Denis</div>
+        <div>Tel : 02 62 56 83 48&nbsp;&nbsp;drfabre@cabinet-ortho.re</div>
+      </div>
+    </div>
     <h1>Examen Clinique - Matrice fonctionnelle</h1>
     <div class="detail-patient">
       <div><strong>Nom :</strong> ${escapeHtml(record.nom)}</div>
@@ -689,6 +700,10 @@ function buildDetailHtml(record) {
     <div class="detail-group detail-group--wide">
       <h3>Degré de difficulté clinique</h3>
       <dl><dd>${val(record, 'degreDifficulteClinique')}</dd></dl>
+    </div>
+    <div class="signature-block">
+      <img src="assets/signature.jpg" alt="Signature" class="signature-block__img" />
+      <div class="signature-block__caption">Docteur Mélanie FABRE</div>
     </div>
   `;
 }
