@@ -489,9 +489,10 @@ legend {
 }
 
 @media print {
+  @page { margin: 0; }
   .no-print { display: none !important; }
   body { background: #fff; }
-  .wrap { max-width: none; padding: 0; }
+  .wrap { max-width: none; padding: 15mm; }
   main { padding-top: 0; }
   .card.printable { border: none; box-shadow: none; padding: 0; }
   .detail-groups { grid-template-columns: repeat(2, 1fr); gap: 12px; }
