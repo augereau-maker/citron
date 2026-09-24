@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Évaluation Matrice Fonctionnelle — CITRON</title>
+<title>Examen Clinique - Matrice fonctionnelle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
@@ -14,8 +14,8 @@
 <header class="app-header no-print">
   <div class="app-header__inner">
     <a href="../index.html" class="app-header__brand">
-      <img src="../assets/citron-logo.png" alt="CITRON" class="app-header__logo" />
-      <span class="app-header__title">Évaluation Matrice Fonctionnelle</span>
+      <img src="assets/logo.png" alt="Logo" class="app-header__logo" />
+      <span class="app-header__title">Examen Clinique - Matrice fonctionnelle</span>
     </a>
     <nav class="tabs">
       <button type="button" class="tab-btn active" data-view="form">Nouvelle fiche</button>
@@ -28,9 +28,10 @@
 
   <section id="view-form" class="view">
     <form id="matrice-form">
-      <fieldset class="group-block group-patient">
-        <legend>Patient</legend>
-        <div class="group-block__fields group-block__fields--3">
+
+      <fieldset class="group-block group-identification">
+        <legend>Identification</legend>
+        <div class="group-block__fields group-block__fields--4">
           <div class="field">
             <label for="input-nom">Nom</label>
             <input type="text" id="input-nom" name="nom" required />
@@ -43,10 +44,29 @@
             <label for="input-date">Date de la fiche</label>
             <input type="date" id="input-date" name="date" required />
           </div>
+          <div id="identification-fields" class="contents"></div>
         </div>
       </fieldset>
 
-      <div id="form-groups"></div>
+      <div id="motivations-section"></div>
+
+      <h2 class="section-banner">2 — Évaluation Matrice Fonctionnelle</h2>
+      <div id="sections-matrice" class="section-grid"></div>
+
+      <h2 class="section-banner">3 — Évaluation de la denture</h2>
+      <div id="sections-denture" class="section-grid"></div>
+
+      <div id="section-faciale"></div>
+
+      <div id="section-atm"></div>
+
+      <div id="section-personnalite"></div>
+
+      <div id="problemes-section"></div>
+
+      <div id="management-section"></div>
+
+      <div id="degre-difficulte-section"></div>
 
       <p id="form-error" class="error-msg hidden"></p>
       <div class="form-actions">
