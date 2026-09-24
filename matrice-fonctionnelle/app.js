@@ -670,7 +670,9 @@ function buildDetailHtml(record) {
         <div class="letterhead__subtitle">Pratique limitée à l'Orthodontie</div>
       </div>
       <div class="letterhead__contact">
-        <img src="assets/logo.png" alt="Logo" class="letterhead__logo" />
+        <div class="letterhead__logo-slot">
+          <img src="assets/logo.png" alt="Logo" class="letterhead__logo" />
+        </div>
         <div>4 av de la Victoire 97400 Saint Denis</div>
         <div>Tel : 02 62 56 83 48&nbsp;&nbsp;drfabre@cabinet-ortho.re</div>
       </div>

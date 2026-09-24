@@ -454,10 +454,14 @@ legend {
   color: var(--color-primary);
 }
 
+.letterhead__logo-slot {
+  height: 44px;
+  margin-bottom: 6px;
+}
+
 .letterhead__logo {
   height: 44px;
   width: auto;
-  margin-bottom: 6px;
 }
 
 .signature-block {
@@ -549,12 +553,15 @@ legend {
 }
 
 @media print {
-  @page { margin: 0; }
+  @page { margin: 0; margin-top: 15mm; }
+  @page :first { margin-top: 0; }
   .no-print { display: none !important; }
   body { background: #fff; }
-  .wrap { max-width: none; padding: 15mm; }
+  .wrap { max-width: none; padding: 50mm 15mm 15mm; }
   main { padding-top: 0; }
   .card.printable { border: none; box-shadow: none; padding: 0; }
+  .letterhead__logo-slot { position: relative; }
+  .letterhead__logo { position: absolute; right: 0; bottom: 0; height: 176px; width: auto; }
   .detail-groups { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .detail-group { break-inside: avoid; }
   .section-banner { break-after: avoid; }
