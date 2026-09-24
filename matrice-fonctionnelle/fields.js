@@ -21,7 +21,7 @@ export const PATIENT_INFO_FIELDS = [
   { key: 'dateCS', label: 'Date CS', type: 'date' },
   { key: 'dateNaissance', label: 'Date de naissance', type: 'date' },
   { key: 'age', label: 'Âge', type: 'text' },
-  { key: 'stature', label: "Stature (âge qu'il paraît avoir)", type: 'text' },
+  { key: 'stature', label: 'Âge estimé', type: 'text' },
   { key: 'correspondant', label: 'Correspondant', type: 'text' },
   { key: 'sexe', label: 'Sexe', type: 'select', options: ['Masculin', 'Féminin'] },
   { key: 'taille', label: 'Taille (cm)', type: 'number' },
@@ -32,7 +32,7 @@ export const PATIENT_INFO_FIELDS = [
 ];
 
 export const MOTIVATIONS_ITEMS = [
-  { key: 'recouvrement', label: 'Recouvrt' },
+  { key: 'recouvrement', label: 'Recouvrement' },
   { key: 'beance', label: 'Béance' },
   { key: 'surplomb', label: 'Surplomb' },
   { key: 'encombrement', label: 'Encombrt' },
