@@ -7,6 +7,8 @@
 // ============================================================================
 
 import { orthodontieForm } from './orthodontie-fields.js';
+import { kineForm } from './kine-fields.js';
+import { groupFieldName } from './form-def-utils.js';
 
 /**
  * Registre des espaces métiers.
@@ -14,7 +16,7 @@ import { orthodontieForm } from './orthodontie-fields.js';
  */
 export const SPECIALTY_FORMS = {
   orthodontiste: { label: 'Orthodontie', formDef: orthodontieForm },
-  kine: { label: 'Kinésithérapeute', formDef: null },
+  kine: { label: 'Kinésithérapeute', formDef: kineForm },
   orthophoniste: { label: 'Orthophoniste', formDef: null },
   orl: { label: 'ORL', formDef: null },
   allergologue: { label: 'Allergologue', formDef: null },
@@ -27,8 +29,8 @@ export function getFormDefByType(formType) {
   return Object.values(SPECIALTY_FORMS).find((s) => s.formDef?.formType === formType)?.formDef || null;
 }
 
-/** Construit le HTML d'un champ hors case-à-cocher (radio ou texte) déclaré dans `formDef.fields`. */
-function renderField(field) {
+/** Construit le HTML d'un champ hors case-à-cocher (radio, texte ou zone de texte), `name` = nom HTML du champ. */
+function renderField(field, name = field.key) {
   const requiredAttr = field.required ? ' required' : '';
   const requiredMark = field.required ? ' <span class="required-mark">*</span>' : '';
 
@@ -37,7 +39,7 @@ function renderField(field) {
       .map(
         ([value, label]) => `
         <label class="radio-choice">
-          <input type="radio" name="${field.key}" value="${escapeHtml(value)}"${requiredAttr} />
+          <input type="radio" name="${name}" value="${escapeHtml(value)}"${requiredAttr} />
           <span>${escapeHtml(label)}</span>
         </label>`
       )
@@ -46,16 +48,44 @@ function renderField(field) {
       <div class="field-block">
         <span class="field-block__label">${escapeHtml(field.label)}${requiredMark}</span>
         <div class="radio-row">${optionsHtml}</div>
-        <p class="field-error" data-error-for="${field.key}"></p>
+        <p class="field-error" data-error-for="${name}"></p>
       </div>`;
   }
 
+  const control =
+    field.type === 'textarea'
+      ? `<textarea name="${name}" rows="4"${requiredAttr}></textarea>`
+      : `<input type="text" name="${name}"${requiredAttr} />`;
   return `
     <label class="field-block">
       <span class="field-block__label">${escapeHtml(field.label)}${requiredMark}</span>
-      <input type="text" name="${field.key}"${requiredAttr} />
-      <p class="field-error" data-error-for="${field.key}"></p>
+      ${control}
+      <p class="field-error" data-error-for="${name}"></p>
     </label>`;
+}
+
+/** Tableau de cases à cocher (lignes × colonnes) déclaré dans `group.matrix`. */
+function renderMatrix(group) {
+  const { columns, rows } = group.matrix;
+  const headHtml = columns.map(([, label]) => `<th scope="col">${escapeHtml(label)}</th>`).join('');
+  const rowsHtml = rows
+    .map(([rowKey, rowLabel]) => {
+      const cells = columns
+        .map(
+          ([colKey, colLabel]) => `
+          <td><input type="checkbox" name="${group.id}_${rowKey}_${colKey}" aria-label="${escapeHtml(`${rowLabel} — ${colLabel}`)}" /></td>`
+        )
+        .join('');
+      return `<tr><th scope="row">${escapeHtml(rowLabel)}</th>${cells}</tr>`;
+    })
+    .join('');
+  return `
+    <div class="matrix-wrap">
+      <table class="matrix-table">
+        <thead><tr><th></th>${headHtml}</tr></thead>
+        <tbody>${rowsHtml}</tbody>
+      </table>
+    </div>`;
 }
 
 /**
@@ -64,12 +94,16 @@ function renderField(field) {
  */
 export function renderCheckboxForm(formDef) {
   const fieldsHtml = formDef.fields?.length
-    ? `<fieldset class="checkbox-group">${formDef.fields.map(renderField).join('')}</fieldset>`
+    ? `<fieldset class="checkbox-group">${formDef.fields.map((field) => renderField(field)).join('')}</fieldset>`
     : '';
 
   const groupsHtml = formDef.groups
     .map((group) => {
-      const itemsHtml = group.items
+      const groupFieldsHtml = (group.fields || [])
+        .map((field) => renderField(field, groupFieldName(group, field)))
+        .join('');
+      const matrixHtml = group.matrix ? renderMatrix(group) : '';
+      const itemsHtml = (group.items || [])
         .map(([key, label]) => {
           const fieldName = `${group.id}_${key}`;
           return `
@@ -82,7 +116,9 @@ export function renderCheckboxForm(formDef) {
       return `
         <fieldset class="checkbox-group">
           <legend>${escapeHtml(group.title)}</legend>
-          <div class="checkbox-grid">${itemsHtml}</div>
+          ${groupFieldsHtml}
+          ${matrixHtml}
+          ${itemsHtml ? `<div class="checkbox-grid">${itemsHtml}</div>` : ''}
         </fieldset>`;
     })
     .join('');

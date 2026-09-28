@@ -7,6 +7,31 @@
 
 import { z } from 'https://cdn.jsdelivr.net/npm/zod@3/+esm';
 import { orthodontieForm, flatFieldKeys } from './orthodontie-fields.js';
+import { kineForm } from './kine-fields.js';
+import { groupItems, formFieldEntries } from './form-def-utils.js';
+
+/** Schéma Zod généré depuis une définition (cases → booléens, radios → énumérations, textes → chaînes). */
+function buildFormSchema(formDef) {
+  const shape = {};
+  for (const group of formDef.groups) {
+    for (const [key] of groupItems(group)) {
+      shape[`${group.id}_${key}`] = z.boolean().optional().default(false);
+    }
+  }
+  for (const { name, field } of formFieldEntries(formDef)) {
+    if (field.type === 'radio') {
+      const options = z.enum(field.options.map(([value]) => value), {
+        errorMap: () => ({ message: `Merci de renseigner : ${field.label}.` }),
+      });
+      shape[name] = field.required ? options : options.optional();
+    } else {
+      shape[name] = field.required
+        ? z.string().min(1, `Merci de renseigner : ${field.label}.`)
+        : z.string().optional().default('');
+    }
+  }
+  return z.object(shape);
+}
 
 // --- Formulaire "Orthodontiste" (généré depuis orthodontie-fields.js) ------
 // Toutes les cases sont optionnelles et valent `false` par défaut : cocher
@@ -55,6 +80,7 @@ export const schemas = {
   suivi_ortho: suiviOrthoSchema,
   plan_soins: planSoinsSchema,
   orthodontie: orthodontieSchema,
+  kinesitherapie: buildFormSchema(kineForm),
 };
 
 export const formLabels = {
@@ -62,6 +88,7 @@ export const formLabels = {
   suivi_ortho: 'Suivi orthophonique',
   plan_soins: 'Plan de soins ODF / ORL',
   orthodontie: 'Bilan orthodontique initial',
+  kinesitherapie: "Fiche d'examen kinésithérapique",
 };
 
 /**

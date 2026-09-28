@@ -8,6 +8,7 @@
 // ============================================================================
 
 import { openModal } from './navigation.js';
+import { groupItems, groupFieldName } from './form-def-utils.js';
 
 /** Remplit et ouvre la popup de résumé de formulaire (#modal-form-summary). */
 export function showFormSummaryModal({ title, message, messageClass = 'form-feedback is-success', formDef, data }) {
@@ -34,13 +35,22 @@ export function renderFormSummaryContent(formDef, data) {
 
     const sectionsHtml = formDef.groups
       .map((group) => {
-        const checkedItems = group.items.filter(([key]) => data?.[`${group.id}_${key}`] === true);
-        if (checkedItems.length === 0) return '';
+        const filledFields = (group.fields || [])
+          .map((f) => ({ f, value: data?.[groupFieldName(group, f)] }))
+          .filter(({ value }) => value !== undefined && value !== '');
+        const checkedItems = groupItems(group).filter(([key]) => data?.[`${group.id}_${key}`] === true);
+        if (filledFields.length === 0 && checkedItems.length === 0) return '';
+        const fieldsListHtml = filledFields
+          .map(({ f, value }) => {
+            const shown = f.type === 'radio' ? f.options.find(([v]) => v === value)?.[1] || value : value;
+            return `<li><strong>${escapeHtml(f.label)} :</strong> ${escapeHtml(String(shown))}</li>`;
+          })
+          .join('');
         const itemsHtml = checkedItems.map(([, label]) => `<li>${escapeHtml(label)}</li>`).join('');
         return `
         <div class="form-summary__group">
           <h3>${escapeHtml(group.title)}</h3>
-          <ul>${itemsHtml}</ul>
+          <ul>${fieldsListHtml}${itemsHtml}</ul>
         </div>`;
       })
       .join('');

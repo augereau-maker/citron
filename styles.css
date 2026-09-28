@@ -963,7 +963,20 @@ input:focus, select:focus, textarea:focus { border-color: var(--color-primary); 
 .field-block__label { font-size: 0.88rem; color: var(--color-ink-soft); font-weight: 500; }
 .required-mark { color: var(--color-error); font-weight: 700; }
 .field-block input[type="text"] { max-width: 360px; }
-.radio-row { display: flex; gap: 20px; }
+.field-block .field-error { margin: 0; min-height: 0; }
+.specialty-form fieldset.checkbox-group { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); column-gap: 20px; }
+.specialty-form fieldset.checkbox-group > .matrix-wrap,
+.specialty-form fieldset.checkbox-group > .checkbox-grid,
+.specialty-form fieldset.checkbox-group > .field-block:has(textarea) { grid-column: 1 / -1; }
+.field-block textarea { max-width: 640px; min-height: 96px; resize: vertical; }
+.matrix-wrap { overflow-x: auto; margin-bottom: 8px; }
+.matrix-table { border-collapse: collapse; font-size: 0.88rem; color: var(--color-ink); }
+.matrix-table th, .matrix-table td { padding: 6px 18px; text-align: center; }
+.matrix-table thead th { color: var(--color-ink-soft); font-weight: 600; }
+.matrix-table tbody th { text-align: left; font-weight: 400; padding-left: 0; white-space: nowrap; }
+.matrix-table tbody tr + tr { border-top: 1px solid var(--color-border); }
+.matrix-table input { width: auto; }
+.radio-row { display: flex; flex-wrap: wrap; gap: 8px 20px; }
 .radio-choice { display: flex !important; flex-direction: row !important; align-items: center; gap: 8px !important; font-weight: 400 !important; color: var(--color-ink) !important; }
 .radio-choice input { width: auto; }
 .specialty-form { max-width: none; }
