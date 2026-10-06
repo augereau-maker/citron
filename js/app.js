@@ -86,7 +86,7 @@ async function enterApp(user) {
   }
   currentProfile = profile || { role: 'praticien', full_name: user.email };
 
-  document.getElementById('dashboard-user-name').textContent = currentProfile.full_name || user.email;
+  setDashboardUserName(currentProfile.full_name || user.email);
   document.getElementById('dashboard-user-role').textContent =
     currentProfile.role === 'praticien' ? 'Espace praticien' : 'Espace patient';
 
@@ -97,12 +97,18 @@ async function enterApp(user) {
 
 /** Affiche le dashboard pour un praticien provisionné par l'admin (même accès complet qu'un praticien Supabase Auth). */
 async function enterCustomPractitionerDashboard() {
-  document.getElementById('dashboard-user-name').textContent = customPractitionerSession.login;
+  setDashboardUserName(customPractitionerSession.login);
   document.getElementById('dashboard-user-role').textContent = 'Espace praticien';
 
   showScreen('dashboard');
   showDashboardView('home');
   await refreshDashboardData();
+}
+
+/** Affiche l'identifiant du praticien dans l'en-tête et dans le message de bienvenue. */
+function setDashboardUserName(name) {
+  document.getElementById('dashboard-user-name').textContent = name;
+  document.getElementById('welcome-title').textContent = `Bonjour ${name} !`;
 }
 
 async function refreshDashboardData() {
@@ -304,6 +310,9 @@ function bindPatientSearchAndCreate() {
       firstName: newPatientForm.fieldA.value,
       lastName: newPatientForm.fieldB.value,
       birthDate: newPatientForm.fieldC.value,
+      phone: newPatientForm.fieldD.value,
+      email: newPatientForm.fieldE.value,
+      city: newPatientForm.fieldF.value,
     });
 
     if (result.error) {

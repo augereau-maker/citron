@@ -8,6 +8,7 @@
 
 import { orthodontieForm } from './orthodontie-fields.js';
 import { kineForm } from './kine-fields.js';
+import { orthophonieForm } from './orthophonie-fields.js';
 import { groupFieldName } from './form-def-utils.js';
 
 /**
@@ -17,7 +18,7 @@ import { groupFieldName } from './form-def-utils.js';
 export const SPECIALTY_FORMS = {
   orthodontiste: { label: 'Orthodontie', formDef: orthodontieForm },
   kine: { label: 'Kinésithérapeute', formDef: kineForm },
-  orthophoniste: { label: 'Orthophoniste', formDef: null },
+  orthophoniste: { label: 'Orthophoniste', formDef: orthophonieForm },
   orl: { label: 'ORL', formDef: null },
   allergologue: { label: 'Allergologue', formDef: null },
   osteopathe: { label: 'Ostéopathe', formDef: null },
@@ -55,7 +56,7 @@ function renderField(field, name = field.key) {
   const control =
     field.type === 'textarea'
       ? `<textarea name="${name}" rows="4"${requiredAttr}></textarea>`
-      : `<input type="text" name="${name}"${requiredAttr} />`;
+      : `<input type="text" name="${name}"${requiredAttr}${field.defaultValue ? ` value="${escapeHtml(field.defaultValue)}"` : ''} />`;
   return `
     <label class="field-block">
       <span class="field-block__label">${escapeHtml(field.label)}${requiredMark}</span>

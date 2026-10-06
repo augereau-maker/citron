@@ -32,10 +32,16 @@ export async function searchPatients({ firstName = '', lastName = '' } = {}) {
  * prénom + 5 chiffres, mot de passe = 6 lettres). Réessaie en cas de
  * collision d'identifiant (très rare, contrainte unique en base).
  */
-export async function createPatient(practitionerId, { firstName, lastName, birthDate }) {
+export async function createPatient(practitionerId, { firstName, lastName, birthDate, phone, email, city }) {
   if (!firstName?.trim() || !lastName?.trim()) {
     return { error: 'Le prénom et le nom sont obligatoires.' };
   }
+
+  // Colonnes facultatives : n'envoyées que si renseignées (voir supabase-schema.sql).
+  const optionalFields = {};
+  if (phone?.trim()) optionalFields.phone = phone.trim();
+  if (email?.trim()) optionalFields.email = email.trim();
+  if (city?.trim()) optionalFields.city = city.trim();
 
   const maxAttempts = 5;
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
@@ -48,6 +54,7 @@ export async function createPatient(practitionerId, { firstName, lastName, birth
         birth_date: birthDate || null,
         login: generatePatientLogin(firstName),
         password: generatePatientPassword(),
+        ...optionalFields,
       })
       .select('id, first_name, last_name, birth_date, login, password')
       .single();
@@ -81,11 +88,16 @@ function generatePatientPassword() {
 
 /** Récupère une fiche patient par id (avec ses codes d'accès Espace Patient). */
 export async function getPatientById(patientId) {
-  const { data, error } = await supabase
+  const base = 'id, first_name, last_name, birth_date, login, password';
+  let { data, error } = await supabase
     .from('patients')
-    .select('id, first_name, last_name, birth_date, login, password')
+    .select(`${base}, phone, email, city`)
     .eq('id', patientId)
     .single();
+  if (error) {
+    // Colonnes de coordonnées pas encore créées en base : on charge la fiche sans elles.
+    ({ data, error } = await supabase.from('patients').select(base).eq('id', patientId).single());
+  }
   if (error) return { error: error.message };
   return { patient: data };
 }

@@ -34,6 +34,10 @@ export async function openPatientWorkspace(patientId) {
   document.getElementById('patient-workspace-meta').textContent = patient.birth_date
     ? `Né(e) le ${new Date(patient.birth_date).toLocaleDateString('fr-FR')}`
     : '';
+  const contactEl = document.getElementById('patient-workspace-contact');
+  const contact = [patient.phone, patient.email, patient.city].filter(Boolean);
+  contactEl.textContent = contact.join(' · ');
+  contactEl.hidden = contact.length === 0;
   document.getElementById('patient-workspace-avatar').textContent =
     `${patient.last_name?.[0] || ''}${patient.first_name?.[0] || ''}`.toUpperCase() || '—';
   document.getElementById('patient-credentials-login').textContent = patient.login || '—';

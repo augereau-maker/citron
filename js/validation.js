@@ -8,6 +8,7 @@
 import { z } from 'https://cdn.jsdelivr.net/npm/zod@3/+esm';
 import { orthodontieForm, flatFieldKeys } from './orthodontie-fields.js';
 import { kineForm } from './kine-fields.js';
+import { orthophonieForm } from './orthophonie-fields.js';
 import { groupItems, formFieldEntries } from './form-def-utils.js';
 
 /** Schéma Zod généré depuis une définition (cases → booléens, radios → énumérations, textes → chaînes). */
@@ -81,6 +82,7 @@ export const schemas = {
   plan_soins: planSoinsSchema,
   orthodontie: orthodontieSchema,
   kinesitherapie: buildFormSchema(kineForm),
+  orthophonie: buildFormSchema(orthophonieForm),
 };
 
 export const formLabels = {
@@ -89,6 +91,7 @@ export const formLabels = {
   plan_soins: 'Plan de soins ODF / ORL',
   orthodontie: 'Bilan orthodontique initial',
   kinesitherapie: "Fiche d'examen kinésithérapique",
+  orthophonie: 'Bilan orthophonique',
 };
 
 /**

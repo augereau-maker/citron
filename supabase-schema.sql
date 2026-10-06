@@ -57,6 +57,11 @@ create table if not exists public.patients (
 alter table public.patients add column if not exists login text unique;
 alter table public.patients add column if not exists password text;
 
+-- Coordonnées facultatives saisies à la création d'un patient.
+alter table public.patients add column if not exists phone text;
+alter table public.patients add column if not exists email text;
+alter table public.patients add column if not exists city text;
+
 -- practitioner_id peut désormais référencer soit auth.users, soit practitioners.
 alter table public.patients drop constraint if exists patients_practitioner_id_fkey;
 
